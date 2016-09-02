@@ -1,5 +1,5 @@
 within IDEAS.Buildings.Components.Interfaces;
-expandable connector ZoneBus
+connector ZoneBus
   extends Modelica.Icons.SignalBus;
 
   parameter Integer numIncAndAziInBus
@@ -7,10 +7,10 @@ expandable connector ZoneBus
   parameter Boolean computeConservationOfEnergy
     "Add variables for checking conservation of energy";
 
-  Modelica.SIunits.Power QTra_design annotation ();
-  Modelica.SIunits.Area area annotation ();
-  Modelica.SIunits.Emissivity epsLw annotation ();
-  Modelica.SIunits.Emissivity epsSw annotation ();
+  RealCon QTra_design annotation ();
+  RealCon area annotation ();
+  RealCon epsLw annotation ();
+  RealCon epsSw annotation ();
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a surfCon annotation ();
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_b surfRad annotation ();
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a iSolDir annotation ();
@@ -22,7 +22,8 @@ expandable connector ZoneBus
   IDEAS.Buildings.Components.BaseClasses.ConservationOfEnergy.EnergyPort E if
                                                           computeConservationOfEnergy
     "Internal energy in model" annotation ();
-  Modelica.SIunits.Angle inc annotation ();
-  Modelica.SIunits.Angle azi annotation ();
+  RealCon inc annotation ();
+  RealCon azi annotation ();
 
+  connector RealCon = Real;
 end ZoneBus;
